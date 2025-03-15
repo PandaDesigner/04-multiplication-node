@@ -5,7 +5,7 @@ export interface CreateTableUseCase {
 
 export interface CreateTableOptions {
     base: number;
-    limit: number;
+    limit?: number;
 }
 
 
@@ -17,7 +17,7 @@ export class CreateTable implements CreateTableUseCase {
          */
     ) { }
 
-    execute({ base, limit }: CreateTableOptions) {
+    execute({ base, limit = 10 }: CreateTableOptions) {
         return Array.from({ length: limit }).map((_, index) => {
             const iterador = index + 1
             return `${base} X ${iterador} = ${base * iterador}`
